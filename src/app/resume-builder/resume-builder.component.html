@@ -1,0 +1,231 @@
+<div class="container my-5">
+    <h2 class="text-center text-primary mb-4">ATS-Friendly Resume Builder</h2>
+    <form [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
+      <!-- Personal Details Section -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-3">Personal Details</h5>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName" class="form-label fw-semibold">First Name</label>
+            <input
+              id="firstName"
+              type="text"
+              class="form-control"
+              formControlName="firstName"
+              placeholder="Enter your first name"
+            />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName" class="form-label fw-semibold">Last Name</label>
+            <input
+              id="lastName"
+              type="text"
+              class="form-control"
+              formControlName="lastName"
+              placeholder="Enter your last name"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label fw-semibold">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="phone" class="form-label fw-semibold">Phone Number</label>
+            <input
+              id="phone"
+              type="text"
+              class="form-control"
+              formControlName="phone"
+              placeholder="Enter your phone number"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="linkedin" class="form-label fw-semibold">LinkedIn</label>
+            <input
+              id="linkedin"
+              type="url"
+              class="form-control"
+              formControlName="linkedin"
+              placeholder="Enter your LinkedIn URL"
+            />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="github" class="form-label fw-semibold">GitHub</label>
+            <input
+              id="github"
+              type="url"
+              class="form-control"
+              formControlName="github"
+              placeholder="Enter your GitHub URL"
+            />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="portfolio" class="form-label fw-semibold">Portfolio</label>
+            <input
+              id="portfolio"
+              type="url"
+              class="form-control"
+              formControlName="portfolio"
+              placeholder="Enter your portfolio link"
+            />
+          </div>
+        </div>
+      </div>
+  
+      <!-- Professional Summary Section -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-3">Professional Summary</h5>
+        <textarea
+          id="professionalSummary"
+          rows="4"
+          class="form-control"
+          formControlName="professionalSummary"
+          placeholder="Write a brief professional summary"
+        ></textarea>
+      </div>
+  
+      <!-- Skills Section -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-3">Skills</h5>
+        <input
+          id="skills"
+          type="text"
+          class="form-control"
+          formControlName="skills"
+          placeholder="e.g., JavaScript, Angular, Bootstrap"
+        />
+      </div>
+  
+      <!-- Awards Section -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-3">Awards</h5>
+        <textarea
+          id="awards"
+          rows="3"
+          class="form-control"
+          formControlName="awards"
+          placeholder="List your awards"
+        ></textarea>
+      </div>
+  
+      <!-- Hobbies Section -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-3">Hobbies</h5>
+        <textarea
+          id="hobbies"
+          rows="3"
+          class="form-control"
+          formControlName="hobbies"
+          placeholder="List your hobbies"
+        ></textarea>
+      </div>
+  
+      <!-- Education Section -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-3">Education</h5>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label for="degree" class="form-label fw-semibold">Degree</label>
+            <input
+              id="degree"
+              type="text"
+              class="form-control"
+              formControlName="degree"
+              placeholder="e.g., B.Sc. in Computer Science"
+            />
+          </div>
+          <div class="col-md-4">
+            <label for="institution" class="form-label fw-semibold">Institution</label>
+            <input
+              id="institution"
+              type="text"
+              class="form-control"
+              formControlName="institution"
+              placeholder="e.g., XYZ University"
+            />
+          </div>
+          <div class="col-md-4">
+            <label for="year" class="form-label fw-semibold">Year</label>
+            <input
+              id="year"
+              type="number"
+              class="form-control"
+              formControlName="year"
+              placeholder="e.g., 2024"
+            />
+          </div>
+        </div>
+      </div>
+  
+      <!-- Work Experience Section -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-3">Work Experience</h5>
+        <div
+          formArrayName="experience"
+          *ngFor="let exp of experience.controls; let i = index"
+          class="border rounded p-3 mb-3"
+        >
+          <div [formGroupName]="i">
+            <label for="jobTitle" class="form-label fw-semibold">Job Title</label>
+            <input
+              id="jobTitle"
+              type="text"
+              class="form-control mb-2"
+              formControlName="jobTitle"
+              placeholder="e.g., Software Developer"
+            />
+            <label for="company" class="form-label fw-semibold">Company</label>
+            <input
+              id="company"
+              type="text"
+              class="form-control mb-2"
+              formControlName="company"
+              placeholder="e.g., ABC Corp"
+            />
+            <div class="row g-2">
+              <div class="col-md-6">
+                <label for="startDate" class="form-label fw-semibold">Start Date</label>
+                <input id="startDate" type="date" class="form-control" formControlName="startDate" />
+              </div>
+              <div class="col-md-6">
+                <label for="endDate" class="form-label fw-semibold">End Date</label>
+                <input id="endDate" type="date" class="form-control" formControlName="endDate" />
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-danger btn-sm mt-2"
+            (click)="removeExperience(i)"
+          >
+            Remove
+          </button>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="addExperience()">
+          Add Experience
+        </button>
+      </div>
+  
+      <div class="d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-primary btn-sm me-2" (click)="submit()">Submit Resume</button>
+        <button type="button" class="btn btn-danger btn-sm">Reset Resume</button>
+      </div>
+      
+    </form>
+  
+    <div class="mt-3">
+        <div #result></div>
+        <button class="btn btn-success btn-sm  mt-2" (click)="printDownload()">Download Resume</button>
+      </div>
+  </div>
+  

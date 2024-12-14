@@ -37,4 +37,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 3.@google/generative-ai
 
 
-# 
+# badic of Angular {Interpolation , binfing}
+# Angular reactive forms
+# Angular standalone component 
+# project cration
+# ng new <project-name>
+# npm command 
+
+run this command for External libraries 
+
+# npm i @google/generative-ai html2canvas jspdf
